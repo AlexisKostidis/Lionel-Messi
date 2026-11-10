@@ -1,9 +1,250 @@
 <h1>Lionel Messi</h1>
-<h2>Steckbrief</h2>
-Lionel Messi ist 39 Jahre alt.
-Voller Name	Lionel Andrés Messi
-Geburtstag	24. Juni 1987
-Geburtsort	Rosario, Argentinien
-Größe	169 cm
-Position        Stürmer
-Legenden Erfolg	5 mal Weltfußballer des Jahres.
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lionel Messi | GOAT</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #07152e;
+    color: white;
+}
+
+header {
+    background: #061027;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #55baff;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #55baff;
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background:
+    linear-gradient(rgba(4,15,40,.65),rgba(4,15,40,.9)),
+    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    color: #55baff;
+}
+
+.hero p {
+    font-size: 22px;
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    background: #168de2;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #55baff;
+    transform: scale(1.08);
+}
+
+section {
+    padding: 70px 8%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 38px;
+    color: #55baff;
+    margin-bottom: 35px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #10274b;
+    padding: 30px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: #173866;
+}
+
+.card h3 {
+    font-size: 35px;
+    color: #55baff;
+    margin-bottom: 10px;
+}
+
+.clubs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.club {
+    background: #10274b;
+    padding: 25px 40px;
+    border-radius: 12px;
+    font-size: 22px;
+}
+
+.quote {
+    background: #10274b;
+    padding: 45px 20px;
+    font-size: 23px;
+    font-style: italic;
+    border-radius: 15px;
+}
+
+footer {
+    background: #030b1b;
+    text-align: center;
+    padding: 25px;
+    color: #aaa;
+}
+
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 8px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MESSI 🐐</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#erfolge">Erfolge</a>
+        <a href="#karriere">Karriere</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <div>
+        <h1>LIONEL MESSI</h1>
+        <p>THE GREATEST OF ALL TIME 🐐</p>
+        <a href="#erfolge" class="btn">Entdecke seine Karriere</a>
+    </div>
+</div>
+
+<section id="erfolge">
+    <h2>🏆 Seine Erfolge</h2>
+
+    <div class="stats">
+        <div class="card">
+            <h3>8</h3>
+            <p>Ballon d'Or Auszeichnungen</p>
+        </div>
+
+        <div class="card">
+            <h3>4</h3>
+            <p>Champions-League-Titel</p>
+        </div>
+
+        <div class="card">
+            <h3>1</h3>
+            <p>Weltmeistertitel (2022)</p>
+        </div>
+
+        <div class="card">
+            <h3>10</h3>
+            <p>Spanische Meisterschaften</p>
+        </div>
+    </div>
+</section>
+
+<section id="karriere">
+    <h2>⚽ Seine Karriere</h2>
+
+    <div class="clubs">
+        <div class="club">🔵🔴 FC Barcelona</div>
+        <div class="club">🔵 Paris Saint-Germain</div>
+        <div class="club">🩷 Inter Miami</div>
+        <div class="club">🇦🇷 Argentinien</div>
+    </div>
+</section>
+
+<section>
+    <h2>🐐 Eine Legende</h2>
+    <div class="quote">
+        "Man muss für seine Träume kämpfen."
+        <br><br>
+        <strong>– Lionel Messi</strong>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Messi Fan Website | Made with ❤️ ⚽</p>
+</footer>
+
+<script>
+window.addEventListener("scroll", function() {
+    document.querySelectorAll(".card").forEach(card => {
+        const position = card.getBoundingClientRect().top;
+
+        if(position < window.innerHeight - 50) {
+            card.style.opacity = "1";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

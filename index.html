@@ -254,6 +254,236 @@ window.addEventListener("scroll", function() {
     });
 });
 </script>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messi Quiz 🐐</title>
 
+<style>
+body {
+    background: linear-gradient(135deg, #001f4d, #009fe3);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+    color: #111;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px #0005;
+}
+
+h1 {
+    color: #0077cc;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: #008de6;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #005baa;
+    transform: scale(1.02);
+}
+
+#result {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#next {
+    background: #16a34a;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🐐 Messi Quiz</h1>
+    <p>Wie gut kennst du Lionel Messi?</p>
+
+    <h3 id="progress"></h3>
+    <h2 id="question"></h2>
+
+    <div id="answers"></div>
+
+    <button id="next" class="hidden" onclick="nextQuestion()">
+        Nächste Frage →
+    </button>
+
+    <div id="result"></div>
+    <button id="restart" class="hidden" onclick="restartQuiz()">
+        Quiz neu starten 🔄
+    </button>
+</div>
+
+<script>
+const questions = [
+{
+    question: "In welchem Jahr wurde Messi geboren?",
+    answers: ["1985", "1987", "1990", "1989"],
+    correct: 1
+},
+{
+    question: "In welcher Stadt wurde Messi geboren?",
+    answers: ["Buenos Aires", "Madrid", "Rosario", "Barcelona"],
+    correct: 2
+},
+{
+    question: "Mit welcher Nationalmannschaft gewann Messi die WM 2022?",
+    answers: ["Brasilien", "Spanien", "Argentinien", "Portugal"],
+    correct: 2
+},
+{
+    question: "Wie viele Ballon d'Or hat Messi bis 2023 gewonnen?",
+    answers: ["5", "6", "7", "8"],
+    correct: 3
+},
+{
+    question: "Für welchen Verein spielte Messi besonders lange?",
+    answers: ["Real Madrid", "FC Barcelona", "Chelsea", "Bayern München"],
+    correct: 1
+},
+{
+    question: "Welche Rückennummer trägt Messi häufig?",
+    answers: ["7", "9", "10", "11"],
+    correct: 2
+},
+{
+    question: "Wie heißt Messis Heimatland?",
+    answers: ["Chile", "Argentinien", "Uruguay", "Kolumbien"],
+    correct: 1
+},
+{
+    question: "Bei welchem Verein spielt Messi seit 2023?",
+    answers: ["Inter Miami", "PSG", "Manchester City", "Juventus"],
+    correct: 0
+}
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function showQuestion() {
+    answered = false;
+
+    document.getElementById("progress").textContent =
+        `Frage ${current + 1} von ${questions.length}`;
+
+    document.getElementById("question").textContent =
+        questions[current].question;
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    questions[current].answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.textContent = answer;
+        button.onclick = () => checkAnswer(index, button);
+        answersDiv.appendChild(button);
+    });
+
+    document.getElementById("next").classList.add("hidden");
+}
+
+function checkAnswer(index, button) {
+    if (answered) return;
+    answered = true;
+
+    const correct = questions[current].correct;
+    const buttons = document.querySelectorAll("#answers button");
+
+    buttons.forEach((btn, i) => {
+        btn.disabled = true;
+
+        if (i === correct) {
+            btn.style.background = "#16a34a";
+        } else if (i === index) {
+            btn.style.background = "#dc2626";
+        }
+    });
+
+    if (index === correct) {
+        score++;
+    }
+
+    document.getElementById("next").classList.remove("hidden");
+}
+
+function nextQuestion() {
+    current++;
+
+    if (current < questions.length) {
+        showQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("question").textContent =
+        "Quiz beendet! 🏆";
+
+    document.getElementById("progress").textContent = "";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("next").classList.add("hidden");
+
+    let message = "";
+
+    if (score === 8) {
+        message = "GOAT! Du bist ein echter Messi-Experte! 🐐";
+    } else if (score >= 6) {
+        message = "Weltklasse! Du kennst Messi sehr gut! ⚽";
+    } else if (score >= 4) {
+        message = "Gute Leistung! Weiter so!";
+    } else {
+        message = "Trainiere weiter und versuche es nochmal!";
+    }
+
+    document.getElementById("result").innerHTML =
+        `Du hast ${score} von 8 Punkten erreicht!<br>${message}`;
+
+    document.getElementById("restart").classList.remove("hidden");
+}
+
+function restartQuiz() {
+    current = 0;
+    score = 0;
+
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("restart").classList.add("hidden");
+
+    showQuestion();
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
 </body>
 </html>
